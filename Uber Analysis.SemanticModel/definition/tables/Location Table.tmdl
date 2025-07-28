@@ -1,0 +1,47 @@
+table 'Location Table'
+	lineageTag: fc505171-389f-4570-8847-3636013f1d07
+
+	column LocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: ef70023c-3ae1-4c6b-b630-da38b6fc4384
+		summarizeBy: none
+		sourceColumn: LocationID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: d2b0bca8-5aa6-402a-a826-257c5f550d4a
+		summarizeBy: none
+		sourceColumn: Location
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: fd88811b-ca39-47d6-bcc3-45851a7085df
+		summarizeBy: none
+		sourceColumn: City
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Location Table' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\prati\Downloads\Location Table.xlsx"), null, true),
+				    #"Location Table_Sheet" = Source{[Item="Location Table",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Location Table_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"LocationID", Int64.Type}, {"Location", type text}, {"City", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

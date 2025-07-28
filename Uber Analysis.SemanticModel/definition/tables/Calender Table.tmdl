@@ -1,0 +1,39 @@
+table 'Calender Table'
+	lineageTag: 05aec6e1-ac63-4d53-9e39-d4efa7c6ffeb
+
+	column Date
+		formatString: Long Date
+		lineageTag: d9105099-0bb9-444c-91f3-e5a1f5fcb991
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 166792e4-bb66-4be6-9d42-a8c735da8d0f
+			defaultHierarchy: LocalDateTable_1ae65674-c08a-4d8a-a5c8-ec856849bf6a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day Name' = FORMAT('Calender Table'[Date], "ddd")
+		lineageTag: 8e4d429b-439c-41df-8740-6e5b5b083ba4
+		summarizeBy: none
+		sortByColumn: 'Day Num'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Num' = WEEKDAY('Calender Table'[Date],2)
+		formatString: 0
+		lineageTag: f8f3a205-30e9-4afb-8182-9098731ce290
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calender Table' = calculated
+		mode: import
+		source = CALENDAR(MIN('Trip Details'[Pickup Date]), MAX('Trip Details'[Pickup Date]))
+
+	annotation PBI_Id = 1279c35ceaf1477b9f2dcebc3ecd7e6b
+

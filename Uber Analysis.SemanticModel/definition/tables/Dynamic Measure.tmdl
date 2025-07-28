@@ -1,0 +1,53 @@
+table 'Dynamic Measure'
+	lineageTag: efbb0b3c-74e0-4d14-9290-6b8d75c4fa05
+
+	column 'Dynamic Measure'
+		lineageTag: 3be07d1d-9ab9-45dd-8bbb-521b241f2af0
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Dynamic Measure Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Dynamic Measure Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dynamic Measure Fields'
+		lineageTag: 05323c8b-a83b-4ffa-af68-b0e6b601c441
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Dynamic Measure Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dynamic Measure Order'
+		formatString: 0
+		lineageTag: 86b39477-b3e5-499a-9dc5-987e5d5a2417
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dynamic Title' = IF('Dynamic Measure'[Dynamic Measure Order] = 0, "Total Bookings", IF('Dynamic Measure'[Dynamic Measure Order] = 1, "Total Bookings Value", IF('Dynamic Measure'[Dynamic Measure Order] = 2, "Total Trip Distance", "Other")))
+		lineageTag: 00e7368c-f7d0-475b-a29a-f9d3df3f1c44
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Measure' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Booking", NAMEOF('Trip Details'[Total Booking]), 0),
+				    ("Total Booking Value", NAMEOF('Trip Details'[Total Booking Value]), 1),
+				    ("Total Trip Distance Measure", NAMEOF('Trip Details'[Total Trip Distance Measure]), 2)
+				}
+
+	annotation PBI_Id = bfb1a2517e9e44488f9d02159494e4b3
+
