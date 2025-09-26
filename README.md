@@ -2,7 +2,7 @@
 
 Dashboard Link : https://app.powerbi.com/links/DyqeDOg1o_?ctid=4e736b85-ff12-4b02-81e6-1c7428d14652&pbi_source=linkShare
 
-**Problem Statement**
+
 **Problem Statement: Uber Trip Analysis**
 
 **Uber needs to understand its trip patterns, revenue, and operational efficiency to make data-driven decisions. Challenges include identifying peak hours, high-demand locations, vehicle utilization, and revenue trends while handling large volumes of trip data. The goal of this project is to build interactive dashboards that provide insights into bookings, trip distances, durations, and payment types, enabling stakeholders to optimize driver allocation, pricing, and overall service quality.**
