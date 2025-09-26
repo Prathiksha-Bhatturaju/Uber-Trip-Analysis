@@ -23,3 +23,17 @@ This project demonstrates an end-to-end data analytics workflow for Uber trip da
 **6. Deployment & Automation:** Published the report to Power BI Service and scheduled data refreshes to keep dashboards updated with the latest data.
 
 **7. Documentation & Collaboration:** Published full project documentation and reports on GitHub, including datasets, DAX measures, and development process for reproducibility.
+
+
+
+Overall Insights: Uber Trip Analysis
+
+**Total Activity:**  Uber completed 103.7K bookings, generating $1.6M in revenue, covering 349K miles, with an average trip of 3 miles and 16 minutes.
+
+**Vehicle Trends:** UberX had the most bookings (38K), and brought in the highest revenue (~$5.8M) and covered the longest distance (131K miles). Average fare across all types is around $15.
+
+**Payments & Trip Type:** Most trips were paid via Uber Pay, with bookings almost evenly split between day and night trips.
+
+**Peak Time & Day:** Most trips occur in the late afternoon/early evening (3–6 PM). Weekends see the highest bookings, with Fridays being the lowest.
+
+**Location Hotspots:** Penn Station/Madison Square West is the most common pickup point, and Upper East Side North is the most frequent drop-off, highlighting busy commuter and residential areas.
